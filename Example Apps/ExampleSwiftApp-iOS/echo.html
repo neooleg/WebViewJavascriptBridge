@@ -15,19 +15,12 @@
 	}
 
 	setupWebViewJavascriptBridge(function(bridge) {
-		bridge.callHandler('Greet', 'Hello world');
-		bridge.registerHandler('echoHandler', function(data, responseCallback) {
-			responseCallback(data)
-		})
-		bridge.registerHandler('jsRcvResponseTest', function(data, responseCallback) {
-			bridge.callHandler('objcEchoToJs', { foo:'bar' }, function(response) {
-				if (response && response.foo == 'bar') {
-					responseCallback("Response from JS")
-				} else {
-					responseCallback("Failed")
-				}
-			})
-		})
+        
+        bridge.registerHandler("showAlert", function(data) { document.body.style.background = "orange"; })
+        bridge.registerHandler("getCurrentPageUrl", function(data, responseCallback) {
+            responseCallback(document.location.toString())
+        })
+        
 	})
 	</script>
 </body></html>
