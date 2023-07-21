@@ -1,6 +1,9 @@
 WebViewJavascriptBridge
 =======================
 
+# ❗️ Updates on top of the fork
+- For the test app (Swift) WebView was added to actually test the bridge with it. See more detailes in the [commit message for this change](https://github.com/marcuswestin/WebViewJavascriptBridge/commit/d2324e7c271a2e5fd39e70f62e870831aad3efe2).
+
 [![Circle CI](https://img.shields.io/circleci/project/github/marcuswestin/WebViewJavascriptBridge.svg)](https://circleci.com/gh/marcuswestin/WebViewJavascriptBridge)
 
 An iOS/OSX bridge for sending messages between Obj-C and JavaScript in WKWebViews, UIWebViews & WebViews.
