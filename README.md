@@ -80,12 +80,12 @@ self.bridge = [WebViewJavascriptBridge bridgeForWebView:webView];
 3) Register a handler in ObjC, and call a JS handler:
 
 ```objc
-[self.bridge registerHandler:@"ObjC Echo" handler:^(id data, WVJBResponseCallback responseCallback) {
+[self.bridge registerHandler:@"nativeHandlerCallFromJs" handler:^(id data, WVJBResponseCallback responseCallback) {
 	NSLog(@"ObjC Echo called with: %@", data);
 	responseCallback(data);
 }];
-[self.bridge callHandler:@"JS Echo" data:nil responseCallback:^(id responseData) {
-	NSLog(@"ObjC received response: %@", responseData);
+[self.bridge callHandler:@"jsHandlerCallFromNative" data:nil responseCallback:^(id responseData) {
+	NSLog(@"ObjC received response from JavaScript: %@", responseData);
 }];
 ```
 
@@ -111,11 +111,11 @@ setupWebViewJavascriptBridge(function(bridge) {
 	
 	/* Initialize your app here */
 
-	bridge.registerHandler('JS Echo', function(data, responseCallback) {
+	bridge.registerHandler('jsHandlerCallFromNative', function(data, responseCallback) {
 		console.log("JS Echo called with:", data)
 		responseCallback(data)
 	})
-	bridge.callHandler('ObjC Echo', {'key':'value'}, function responseCallback(responseData) {
+	bridge.callHandler('nativeHandlerCallFromJs', {'key':'value'}, function responseCallback(responseData) {
 		console.log("JS received response:", responseData)
 	})
 })
